@@ -9,6 +9,7 @@ import ConnectivityTests from './pages/ConnectivityTests';
 import EventLogs from './pages/EventLogs';
 import Documentation from './pages/Documentation';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { api } from './services/api';
 import { getSocket } from './services/socket';
 
@@ -69,50 +70,52 @@ export default function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <div className="min-h-screen bg-[#070a12] text-slate-100 flex flex-col font-sans">
-        {/* Top Navigation */}
-        <Navbar
-          activePage={activePage}
-          serverStatus={serverStatus}
-          clientInfo={clientInfo}
-        />
-
-        <div className="flex-1 flex overflow-hidden">
-          {/* Collapsible Sidebar */}
-          <Sidebar
+    <ThemeProvider>
+      <AuthProvider>
+        <div className="min-h-screen app-container bg-[#070a12] text-slate-100 flex flex-col font-sans transition-colors duration-200">
+          {/* Top Navigation */}
+          <Navbar
             activePage={activePage}
-            setActivePage={setActivePage}
-            isCollapsed={isSidebarCollapsed}
-            setIsCollapsed={setIsSidebarCollapsed}
+            serverStatus={serverStatus}
+            clientInfo={clientInfo}
           />
 
-          {/* Central Content Area */}
-          <main className="flex-1 overflow-y-auto p-6 bg-[#070a12]">
-            {activePage === 'overview' && (
-              <Overview onNavigate={setActivePage} clientInfo={clientInfo} />
-            )}
-            {activePage === 'live-network' && (
-              <LiveNetwork clientInfo={clientInfo} setClientInfo={setClientInfo} />
-            )}
-            {activePage === 'virtual-lab' && (
-              <VirtualLab />
-            )}
-            {activePage === 'addressing' && (
-              <IpAddressing />
-            )}
-            {activePage === 'tests' && (
-              <ConnectivityTests />
-            )}
-            {activePage === 'logs' && (
-              <EventLogs />
-            )}
-            {activePage === 'docs' && (
-              <Documentation />
-            )}
-          </main>
+          <div className="flex-1 flex overflow-hidden">
+            {/* Collapsible Sidebar */}
+            <Sidebar
+              activePage={activePage}
+              setActivePage={setActivePage}
+              isCollapsed={isSidebarCollapsed}
+              setIsCollapsed={setIsSidebarCollapsed}
+            />
+
+            {/* Central Content Area */}
+            <main className="flex-1 overflow-y-auto p-6 app-main bg-[#070a12] transition-colors duration-200">
+              {activePage === 'overview' && (
+                <Overview onNavigate={setActivePage} clientInfo={clientInfo} />
+              )}
+              {activePage === 'live-network' && (
+                <LiveNetwork clientInfo={clientInfo} setClientInfo={setClientInfo} />
+              )}
+              {activePage === 'virtual-lab' && (
+                <VirtualLab />
+              )}
+              {activePage === 'addressing' && (
+                <IpAddressing />
+              )}
+              {activePage === 'tests' && (
+                <ConnectivityTests />
+              )}
+              {activePage === 'logs' && (
+                <EventLogs />
+              )}
+              {activePage === 'docs' && (
+                <Documentation />
+              )}
+            </main>
+          </div>
         </div>
-      </div>
-    </AuthProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

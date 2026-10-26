@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Network, Wifi, WifiOff, LogIn, LogOut, Flame, Shield } from 'lucide-react';
+import { Network, Wifi, WifiOff, LogIn, LogOut, Flame, Shield, Sun, Moon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import AuthModal from './AuthModal';
 
 export default function Navbar({ activePage, serverStatus, clientInfo }) {
   const { user, logout, isFirebaseConfigured } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
@@ -38,7 +40,7 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
           </div>
         </div>
 
-        {/* Real-time Status Badges & Auth Controls */}
+        {/* Real-time Status Badges, Theme Toggle & Auth Controls */}
         <div className="flex items-center gap-3">
           {/* Physical Client Identity */}
           {clientInfo?.displayName ? (
@@ -72,6 +74,19 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
             )}
           </div>
 
+          {/* Theme Switcher Toggle */}
+          <button
+            onClick={toggleTheme}
+            title={theme === 'dark' ? "Switch to Light Theme" : "Switch to Dark Theme"}
+            className="p-2 rounded-xl bg-[#0c101d] hover:bg-[#111728] border border-[#BEDEFF]/20 hover:border-[#FFA500]/50 transition-all shadow-sm flex items-center justify-center cursor-pointer group"
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-[#FFA500] group-hover:rotate-45 transition-transform" />
+            ) : (
+              <Moon className="w-4 h-4 text-[#930031] group-hover:-rotate-12 transition-transform" />
+            )}
+          </button>
+
           {/* User Authentication Status */}
           {user ? (
             <div className="flex items-center gap-2 pl-2 border-l border-[#BEDEFF]/15">
@@ -86,7 +101,7 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
               <button
                 onClick={logout}
                 title="Sign Out"
-                className="p-2 rounded-xl bg-[#0c101d] hover:bg-[#930031]/25 hover:text-[#FFF2A7] text-slate-400 border border-slate-800 hover:border-[#930031]/50 transition-all"
+                className="p-2 rounded-xl bg-[#0c101d] hover:bg-[#930031]/25 hover:text-[#FFF2A7] text-slate-400 border border-slate-800 hover:border-[#930031]/50 transition-all cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
               </button>
@@ -94,7 +109,7 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
           ) : (
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FFA500] hover:bg-[#FFA500]/90 text-[#070a12] font-bold text-xs font-mono transition-all shadow-md shadow-[#FFA500]/25 hover:shadow-lg hover:shadow-[#FFA500]/30 hover:scale-[1.02]"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FFA500] hover:bg-[#FFA500]/90 text-[#070a12] font-bold text-xs font-mono transition-all shadow-md shadow-[#FFA500]/25 hover:shadow-lg hover:shadow-[#FFA500]/30 hover:scale-[1.02] cursor-pointer"
             >
               <LogIn className="w-3.5 h-3.5 text-[#070a12]" />
               <span>Sign In</span>
