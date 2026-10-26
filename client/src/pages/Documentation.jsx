@@ -39,14 +39,14 @@ export default function Documentation() {
   return (
     <div className="space-y-8 max-w-5xl mx-auto pb-16">
       {/* Title */}
-      <div className="border-b border-slate-800/80 pb-5">
-        <h1 className="text-2xl font-bold text-slate-100 tracking-tight flex items-center gap-2.5">
-          Computer Networks Theory & Viva Defense Guide
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
+      <div className="border-b border-[#BEDEFF]/15 pb-5">
+        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+          <span className="text-gradient-warm font-extrabold">Computer Networks Theory & Viva Defense Guide</span>
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/30 font-mono font-medium">
             Academic Reference
           </span>
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#BEDEFF]/75 mt-1">
           Concise, student-friendly explanations of core client-server networking principles and defense questions.
         </p>
       </div>
@@ -54,92 +54,104 @@ export default function Documentation() {
       {/* Core Concept Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Concept 1 */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-cyan-400 font-semibold text-sm">
-            <Globe className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl space-y-2">
+          <div className="flex items-center gap-2 text-[#BEDEFF] font-semibold text-sm">
+            <div className="p-1.5 rounded-lg bg-[#BEDEFF]/15 text-[#BEDEFF]">
+              <Globe className="w-4 h-4" />
+            </div>
             Client-Server Architecture
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            A distributed computing structure where service providers (<strong className="text-slate-200">Servers</strong>) listen for requests on designated ports, and service requesters (<strong className="text-slate-200">Clients</strong>) initiate communication over standard protocols (HTTP, WebSockets).
+          <p className="text-xs text-[#BEDEFF]/75 leading-relaxed">
+            A distributed computing structure where service providers (<strong className="text-[#FFF2A7]">Servers</strong>) listen for requests on designated ports, and service requesters (<strong className="text-[#FFA500]">Clients</strong>) initiate communication over standard protocols (HTTP, WebSockets).
           </p>
         </div>
 
         {/* Concept 2 */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm">
-            <Layers className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl space-y-2">
+          <div className="flex items-center gap-2 text-[#FFF2A7] font-semibold text-sm">
+            <div className="p-1.5 rounded-lg bg-[#FFF2A7]/15 text-[#FFF2A7]">
+              <Layers className="w-4 h-4" />
+            </div>
             IPv4 & Subnet Masks
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#BEDEFF]/75 leading-relaxed">
             An IPv4 address is a 32-bit identifier represented as 4 decimal octets. The Subnet Mask demarcates the network prefix from the host identifier through bitwise AND, allowing hosts to determine whether destinations are local or remote.
           </p>
         </div>
 
         {/* Concept 3 */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-purple-400 font-semibold text-sm">
-            <Shield className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl space-y-2">
+          <div className="flex items-center gap-2 text-[#FFA500] font-semibold text-sm">
+            <div className="p-1.5 rounded-lg bg-[#FFA500]/15 text-[#FFA500]">
+              <Shield className="w-4 h-4" />
+            </div>
             Default Gateway & Routing
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#BEDEFF]/75 leading-relaxed">
             The Default Gateway is the IP address of the local router interface on the host's subnet. It acts as the exit node for all packets addressed to external networks.
           </p>
         </div>
 
         {/* Concept 4 */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-          <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
-            <Radio className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl space-y-2">
+          <div className="flex items-center gap-2 text-[#BEDEFF] font-semibold text-sm">
+            <div className="p-1.5 rounded-lg bg-[#930031]/30 text-[#FFF2A7]">
+              <Radio className="w-4 h-4 text-[#FFA500]" />
+            </div>
             WebSockets (Full Duplex) vs HTTP
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#BEDEFF]/75 leading-relaxed">
             HTTP follows a strict half-duplex request-response cycle. WebSockets establish an open, persistent TCP connection enabling simultaneous bidirectional streaming without HTTP header polling overhead.
           </p>
         </div>
       </div>
 
       {/* Packet Tracer Guide Section */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+      <div className="glass-panel p-6 rounded-2xl space-y-4">
+        <div className="flex items-center justify-between border-b border-[#BEDEFF]/15 pb-3">
           <div className="flex items-center gap-2">
-            <Terminal className="w-5 h-5 text-purple-400" />
-            <h3 className="text-sm font-semibold text-slate-100">Cisco Packet Tracer Independent Configuration</h3>
+            <div className="p-1.5 rounded-lg bg-[#FFA500]/15 text-[#FFA500]">
+              <Terminal className="w-5 h-5 text-[#FFA500]" />
+            </div>
+            <h3 className="text-sm font-semibold text-white">Cisco Packet Tracer Independent Configuration</h3>
           </div>
-          <span className="text-xs text-purple-400 font-mono">Module M Guide</span>
+          <span className="text-xs text-[#FFF2A7] font-mono bg-[#930031]/25 border border-[#930031]/50 px-2.5 py-0.5 rounded-full font-medium">Module M Guide</span>
         </div>
 
-        <p className="text-xs text-slate-400 leading-relaxed">
-          The corresponding Packet Tracer network demonstrates the same architecture with 3 PCs, 1 Server, 2 Switches, and 1 Router. Detailed Cisco IOS configuration commands and verification steps are documented in <code className="text-cyan-300 font-mono">docs/packet-tracer-guide.md</code>.
+        <p className="text-xs text-[#BEDEFF]/75 leading-relaxed">
+          The corresponding Packet Tracer network demonstrates the same architecture with 3 PCs, 1 Server, 2 Switches, and 1 Router. Detailed Cisco IOS configuration commands and verification steps are documented in <code className="text-[#FFF2A7] bg-[#070a12] px-2 py-0.5 rounded font-mono border border-[#BEDEFF]/20">docs/packet-tracer-guide.md</code>.
         </p>
 
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-1.5 text-slate-300">
-          <div className="text-slate-500 font-semibold">Router1 Cisco IOS Quick Configuration:</div>
-          <div className="text-purple-300">Router1(config)# interface GigabitEthernet0/0</div>
-          <div className="text-purple-300">Router1(config-if)# ip address 192.168.1.1 255.255.255.0</div>
-          <div className="text-purple-300">Router1(config-if)# no shutdown</div>
-          <div className="text-purple-300">Router1(config)# interface GigabitEthernet0/1</div>
-          <div className="text-purple-300">Router1(config-if)# ip address 192.168.2.1 255.255.255.0</div>
-          <div className="text-purple-300">Router1(config-if)# no shutdown</div>
+        <div className="p-4 rounded-xl bg-[#070a12] border border-[#BEDEFF]/20 font-mono text-xs space-y-1.5 text-slate-300 shadow-inner">
+          <div className="text-[#BEDEFF]/70 font-semibold">Router1 Cisco IOS Quick Configuration:</div>
+          <div className="text-[#FFA500]">Router1(config)# interface GigabitEthernet0/0</div>
+          <div className="text-[#FFF2A7]">Router1(config-if)# ip address 192.168.1.1 255.255.255.0</div>
+          <div className="text-[#BEDEFF]">Router1(config-if)# no shutdown</div>
+          <div className="text-[#FFA500]">Router1(config)# interface GigabitEthernet0/1</div>
+          <div className="text-[#FFF2A7]">Router1(config-if)# ip address 192.168.2.1 255.255.255.0</div>
+          <div className="text-[#BEDEFF]">Router1(config-if)# no shutdown</div>
         </div>
       </div>
 
       {/* Frequently Asked Viva Questions */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-        <h3 className="text-sm font-semibold text-slate-100 border-b border-slate-800/80 pb-3 flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-cyan-400" />
+      <div className="glass-panel p-6 rounded-2xl space-y-4">
+        <h3 className="text-sm font-semibold text-white border-b border-[#BEDEFF]/15 pb-3 flex items-center gap-2">
+          <div className="p-1.5 rounded-lg bg-[#FFA500]/15 text-[#FFA500]">
+            <HelpCircle className="w-5 h-5 text-[#FFA500]" />
+          </div>
           Viva & Lab Defense Questions & Answers
         </h3>
 
         <div className="space-y-4">
           {vivaQuestions.map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 space-y-2">
-              <div className="text-xs font-bold text-cyan-300 flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-cyan-950 border border-cyan-800 text-[10px] flex items-center justify-center shrink-0 mt-0.5 text-cyan-400 font-mono">
+            <div key={i} className="p-4 rounded-xl bg-[#070a12]/90 border border-[#BEDEFF]/15 space-y-2 hover:border-[#FFA500]/30 transition-colors">
+              <div className="text-xs font-bold text-[#FFF2A7] flex items-start gap-2.5">
+                <span className="w-6 h-6 rounded-full bg-[#FFA500]/20 border border-[#FFA500]/40 text-[10px] flex items-center justify-center shrink-0 mt-0.5 text-[#FFA500] font-mono font-bold">
                   Q{i + 1}
                 </span>
-                <span>{item.q}</span>
+                <span className="leading-snug">{item.q}</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed pl-7">
+              <p className="text-xs text-[#BEDEFF]/80 leading-relaxed pl-8 font-sans">
                 {item.a}
               </p>
             </div>

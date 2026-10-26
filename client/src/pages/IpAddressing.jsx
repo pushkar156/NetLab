@@ -63,40 +63,40 @@ export default function IpAddressing() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Title */}
-      <div className="border-b border-slate-800/80 pb-5">
-        <h1 className="text-2xl font-bold text-slate-100 tracking-tight flex items-center gap-2.5">
-          IPv4 Addressing & Subnetting Engine
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
+      <div className="border-b border-[#BEDEFF]/15 pb-5">
+        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+          <span className="text-gradient-warm font-extrabold">IPv4 Addressing & Subnetting Engine</span>
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/30 font-mono font-medium">
             Bitwise Arithmetic
           </span>
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#BEDEFF]/75 mt-1">
           Perform strict 32-bit binary calculations, validate contiguous masks, and verify same-subnet membership.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-slate-800/80 pb-3">
+      <div className="flex gap-2 border-b border-[#BEDEFF]/15 pb-3">
         <button
           onClick={() => setActiveTab('calculator')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-medium transition-colors flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all flex items-center gap-2 ${
             activeTab === 'calculator'
-              ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/40 shadow-sm shadow-[#FFA500]/10 font-bold'
+              : 'text-[#BEDEFF]/70 hover:text-white hover:bg-[#0c101d]'
           }`}
         >
-          <Calculator className="w-4 h-4 text-cyan-400" />
+          <Calculator className="w-4 h-4 text-[#FFA500]" />
           Subnet Calculator & Binary Engine
         </button>
         <button
           onClick={() => setActiveTab('comparator')}
-          className={`px-4 py-2 rounded-xl text-xs font-mono font-medium transition-colors flex items-center gap-2 ${
+          className={`px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all flex items-center gap-2 ${
             activeTab === 'comparator'
-              ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/40 shadow-sm shadow-[#FFA500]/10 font-bold'
+              : 'text-[#BEDEFF]/70 hover:text-white hover:bg-[#0c101d]'
           }`}
         >
-          <Layers className="w-4 h-4 text-indigo-400" />
+          <Layers className="w-4 h-4 text-[#FFA500]" />
           Same-Subnet Comparator
         </button>
       </div>
@@ -105,36 +105,38 @@ export default function IpAddressing() {
       {activeTab === 'calculator' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Input Panel */}
-          <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-            <h3 className="text-sm font-semibold text-slate-100 border-b border-slate-800/80 pb-2 flex items-center gap-2">
-              <Binary className="w-4 h-4 text-cyan-400" />
+          <div className="glass-panel p-6 rounded-2xl space-y-4">
+            <h3 className="text-sm font-semibold text-white border-b border-[#BEDEFF]/15 pb-2 flex items-center gap-2">
+              <div className="p-1.5 rounded-lg bg-[#BEDEFF]/15 text-[#BEDEFF]">
+                <Binary className="w-4 h-4 text-[#BEDEFF]" />
+              </div>
               Subnet Parameters
             </h3>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">IPv4 Host Address</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">IPv4 Host Address</label>
               <input
                 type="text"
                 value={calcIp}
                 onChange={(e) => setCalcIp(e.target.value)}
                 placeholder="192.168.1.50"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-[#FFF2A7] font-semibold focus:outline-none focus:border-[#FFA500] shadow-inner"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Subnet Mask</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Subnet Mask</label>
               <input
                 type="text"
                 value={calcMask}
                 onChange={(e) => setCalcMask(e.target.value)}
                 placeholder="255.255.255.0"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-white focus:outline-none focus:border-[#FFA500] shadow-inner"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Or CIDR Prefix (/{calcCidr})</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Or CIDR Prefix (/{calcCidr})</label>
               <select
                 value={calcCidr}
                 onChange={(e) => {
@@ -148,7 +150,7 @@ export default function IpAddressing() {
                   else if (cidr === 31) setCalcMask('255.255.255.254');
                   else if (cidr === 32) setCalcMask('255.255.255.255');
                 }}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-white focus:outline-none focus:border-[#FFA500]"
               >
                 {[...Array(33).keys()].map((p) => (
                   <option key={p} value={p}>
@@ -161,24 +163,24 @@ export default function IpAddressing() {
             <button
               onClick={handleCalculate}
               disabled={calcLoading}
-              className="w-full py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs font-mono transition-colors shadow-lg shadow-cyan-600/20"
+              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs font-mono transition-all shadow-md shadow-[#FFA500]/25 font-mono"
             >
               {calcLoading ? 'Calculating...' : 'Calculate Subnet Metrics'}
             </button>
 
-            <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-[11px] font-mono text-slate-400 space-y-1">
-              <div className="font-semibold text-slate-300">RFC Special Cases Handled:</div>
-              <div>• <span className="text-cyan-400">/31</span>: RFC 3021 Point-to-Point (2 usable hosts)</div>
-              <div>• <span className="text-cyan-400">/32</span>: Host route (1 address, no broadcast)</div>
+            <div className="p-3.5 bg-[#070a12] border border-[#BEDEFF]/15 rounded-xl text-[11px] font-mono text-[#BEDEFF]/75 space-y-1">
+              <div className="font-semibold text-[#FFF2A7]">RFC Special Cases Handled:</div>
+              <div>• <span className="text-[#FFA500]">/31</span>: RFC 3021 Point-to-Point (2 usable hosts)</div>
+              <div>• <span className="text-[#FFA500]">/32</span>: Host route (1 address, no broadcast)</div>
             </div>
           </div>
 
           {/* Results Panel */}
-          <div className="lg:col-span-2 p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-            <h3 className="text-sm font-semibold text-slate-100 border-b border-slate-800/80 pb-2 flex items-center justify-between">
+          <div className="lg:col-span-2 glass-panel p-6 rounded-2xl space-y-4">
+            <h3 className="text-sm font-semibold text-white border-b border-[#BEDEFF]/15 pb-2 flex items-center justify-between">
               <span>Calculated Network Metrics</span>
               {calcResult?.valid && (
-                <span className="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/30 font-mono font-medium">
                   {calcResult.ipClass} • {calcResult.isPrivate ? 'RFC 1918 Private' : 'Public Routable'}
                 </span>
               )}
@@ -187,28 +189,28 @@ export default function IpAddressing() {
             {calcResult?.valid ? (
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-                  <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-xl space-y-1">
-                    <span className="text-slate-500 text-[10px] uppercase">Network ID Address</span>
-                    <div className="text-base font-bold text-cyan-300">{calcResult.networkAddress}/{calcResult.cidrPrefix}</div>
+                  <div className="p-3.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-1 shadow-inner">
+                    <span className="text-[#BEDEFF]/60 text-[10px] uppercase">Network ID Address</span>
+                    <div className="text-lg font-bold text-[#FFF2A7]">{calcResult.networkAddress}/{calcResult.cidrPrefix}</div>
                   </div>
 
-                  <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-xl space-y-1">
-                    <span className="text-slate-500 text-[10px] uppercase">Directed Broadcast Address</span>
-                    <div className="text-base font-bold text-amber-300">{calcResult.broadcastAddress}</div>
+                  <div className="p-3.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-1 shadow-inner">
+                    <span className="text-[#BEDEFF]/60 text-[10px] uppercase">Directed Broadcast Address</span>
+                    <div className="text-lg font-bold text-[#FFA500]">{calcResult.broadcastAddress}</div>
                   </div>
 
-                  <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-xl space-y-1">
-                    <span className="text-slate-500 text-[10px] uppercase">Usable Host Range</span>
-                    <div className="text-sm font-bold text-slate-200">
+                  <div className="p-3.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-1 shadow-inner">
+                    <span className="text-[#BEDEFF]/60 text-[10px] uppercase">Usable Host Range</span>
+                    <div className="text-sm font-bold text-white">
                       {calcResult.firstUsableHost} — {calcResult.lastUsableHost}
                     </div>
                   </div>
 
-                  <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-xl space-y-1">
-                    <span className="text-slate-500 text-[10px] uppercase">Capacity</span>
-                    <div className="text-sm font-bold text-emerald-400">
+                  <div className="p-3.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-1 shadow-inner">
+                    <span className="text-[#BEDEFF]/60 text-[10px] uppercase">Capacity</span>
+                    <div className="text-sm font-bold text-[#FFF2A7]">
                       {calcResult.usableHosts.toLocaleString()} Usable Hosts
-                      <span className="text-slate-500 font-normal text-xs ml-1">
+                      <span className="text-[#BEDEFF]/60 font-normal text-xs ml-1">
                         ({calcResult.totalAddresses.toLocaleString()} total)
                       </span>
                     </div>
@@ -216,22 +218,22 @@ export default function IpAddressing() {
                 </div>
 
                 {/* Binary Bitwise Representation */}
-                <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2 font-mono text-xs">
-                  <div className="text-slate-400 text-[11px] font-semibold border-b border-slate-800 pb-1">
+                <div className="p-4 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-2 font-mono text-xs shadow-inner">
+                  <div className="text-[#FFF2A7] text-[11px] font-semibold border-b border-[#BEDEFF]/15 pb-1">
                     32-Bit Binary Bitwise Breakdown:
                   </div>
-                  <div className="flex justify-between items-center text-slate-300">
-                    <span className="text-slate-500">Host IP:</span>
-                    <span className="text-cyan-300 select-all">{calcResult.binaryIp}</span>
+                  <div className="flex justify-between items-center text-white">
+                    <span className="text-[#BEDEFF]/70">Host IP:</span>
+                    <span className="text-[#BEDEFF] select-all font-semibold">{calcResult.binaryIp}</span>
                   </div>
-                  <div className="flex justify-between items-center text-slate-300">
-                    <span className="text-slate-500">Netmask:</span>
-                    <span className="text-slate-400 select-all">{calcResult.binaryMask}</span>
+                  <div className="flex justify-between items-center text-white">
+                    <span className="text-[#BEDEFF]/70">Netmask:</span>
+                    <span className="text-[#FFA500] select-all font-semibold">{calcResult.binaryMask}</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="p-8 text-center text-rose-400 text-xs font-mono bg-slate-950 rounded-xl border border-rose-500/20">
+              <div className="p-8 text-center text-[#FFF2A7] text-xs font-mono bg-[#930031]/20 rounded-xl border border-[#930031]/40">
                 {calcResult?.error || 'Invalid IP or Subnet Mask provided.'}
               </div>
             )}
@@ -241,43 +243,45 @@ export default function IpAddressing() {
 
       {/* Tab 2: Same-Subnet Comparator */}
       {activeTab === 'comparator' && (
-        <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-6">
+        <div className="glass-panel p-6 rounded-2xl space-y-6">
           <div>
-            <h3 className="text-sm font-semibold text-slate-100 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-indigo-400" />
+            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+              <div className="p-1.5 rounded-lg bg-[#FFA500]/15 text-[#FFA500]">
+                <Layers className="w-4 h-4 text-[#FFA500]" />
+              </div>
               Subnet Membership Comparator
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#BEDEFF]/75 mt-1">
               Determines whether two devices can communicate directly over Layer 2 switching or whether they must forward packets to a Default Gateway.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Device 1 IP</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Device 1 IP</label>
               <input
                 type="text"
                 value={compIp1}
                 onChange={(e) => setCompIp1(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-[#BEDEFF] font-semibold focus:outline-none focus:border-[#FFA500] shadow-inner"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Device 2 IP</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Device 2 IP</label>
               <input
                 type="text"
                 value={compIp2}
                 onChange={(e) => setCompIp2(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-amber-300 focus:outline-none focus:border-cyan-500"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-[#FFF2A7] font-semibold focus:outline-none focus:border-[#FFA500] shadow-inner"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Subnet Mask</label>
+              <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Subnet Mask</label>
               <input
                 type="text"
                 value={compMask}
                 onChange={(e) => setCompMask(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500"
+                className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-white focus:outline-none focus:border-[#FFA500] shadow-inner"
               />
             </div>
           </div>
@@ -285,7 +289,7 @@ export default function IpAddressing() {
           <button
             onClick={handleCompare}
             disabled={compLoading}
-            className="py-2.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-bold text-xs font-mono transition-colors shadow-lg shadow-indigo-600/20"
+            className="py-2.5 px-6 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs font-mono transition-all shadow-md shadow-[#FFA500]/25 font-mono"
           >
             {compLoading ? 'Comparing...' : 'Compare Subnet Membership'}
           </button>
@@ -293,35 +297,35 @@ export default function IpAddressing() {
           {compResult && (
             <div className={`p-5 rounded-2xl border font-mono text-xs space-y-3 ${
               compResult.sameSubnet
-                ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200'
-                : 'bg-rose-950/20 border-rose-500/30 text-rose-200'
+                ? 'bg-[#FFA500]/10 border-[#FFA500]/40 text-[#FFF2A7]'
+                : 'bg-[#930031]/20 border-[#930031]/50 text-[#FFF2A7]'
             }`}>
               <div className="flex items-center gap-2 text-sm font-bold">
                 {compResult.sameSubnet ? (
                   <>
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                    <span>SAME SUBNET: Direct Layer 2 Switching Supported</span>
+                    <CheckCircle2 className="w-5 h-5 text-[#FFA500]" />
+                    <span className="text-[#FFF2A7]">SAME SUBNET: Direct Layer 2 Switching Supported</span>
                   </>
                 ) : (
                   <>
-                    <XCircle className="w-5 h-5 text-rose-400" />
-                    <span>DIFFERENT SUBNETS: Layer 3 Default Gateway Routing Required</span>
+                    <XCircle className="w-5 h-5 text-[#FFA500]" />
+                    <span className="text-[#FFF2A7]">DIFFERENT SUBNETS: Layer 3 Default Gateway Routing Required</span>
                   </>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs bg-slate-950/80 p-3 rounded-xl border border-slate-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs bg-[#070a12] p-3.5 rounded-xl border border-[#BEDEFF]/15">
                 <div>
-                  <span className="text-slate-400">Host {compResult.ip1} Network ID:</span>
-                  <div className="font-bold text-cyan-300">{compResult.networkAddress1}/{compResult.cidrPrefix}</div>
+                  <span className="text-[#BEDEFF]/70">Host {compResult.ip1} Network ID:</span>
+                  <div className="font-bold text-[#BEDEFF] text-sm">{compResult.networkAddress1}/{compResult.cidrPrefix}</div>
                 </div>
                 <div>
-                  <span className="text-slate-400">Host {compResult.ip2} Network ID:</span>
-                  <div className="font-bold text-amber-300">{compResult.networkAddress2}/{compResult.cidrPrefix}</div>
+                  <span className="text-[#BEDEFF]/70">Host {compResult.ip2} Network ID:</span>
+                  <div className="font-bold text-[#FFF2A7] text-sm">{compResult.networkAddress2}/{compResult.cidrPrefix}</div>
                 </div>
               </div>
 
-              <p className="text-slate-300 leading-relaxed font-sans text-xs">
+              <p className="text-white leading-relaxed font-sans text-xs">
                 {compResult.explanation}
               </p>
             </div>

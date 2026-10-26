@@ -287,14 +287,14 @@ export default function VirtualLab() {
         return {
           ...e,
           animated: true,
-          style: { stroke: '#06b6d4', strokeWidth: 3, filter: 'drop-shadow(0 0 6px #06b6d4)' }
+          style: { stroke: '#FFA500', strokeWidth: 3, filter: 'drop-shadow(0 0 8px rgba(255, 165, 0, 0.7))' }
         };
       }
 
       return {
         ...e,
         animated: false,
-        style: { stroke: '#334155', strokeWidth: 2 }
+        style: { stroke: '#1e263d', strokeWidth: 2 }
       };
     }));
   }, [currentHopIndex, simulationResult, setEdges]);
@@ -317,50 +317,50 @@ export default function VirtualLab() {
   return (
     <div className="flex flex-col h-[calc(100vh-6.5rem)] gap-3">
       {/* Top Controls Toolbar */}
-      <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-wrap items-center justify-between gap-3 shadow-md">
+      <div className="p-3 glass-panel rounded-2xl flex flex-wrap items-center justify-between gap-3 shadow-lg">
         {/* Device Palette */}
-        <div className="flex items-center gap-1.5 border-r border-slate-800 pr-3">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mr-1 hidden sm:inline">
-            Add Device:
+        <div className="flex items-center gap-1.5 border-r border-[#BEDEFF]/15 pr-3">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-[#BEDEFF]/60 mr-1 hidden sm:inline font-semibold">
+            Add Node:
           </span>
           <button
             onClick={() => handleAddDevice('pc')}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-cyan-300 border border-slate-800 text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#BEDEFF] border border-[#BEDEFF]/30 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
           >
-            <Monitor className="w-3.5 h-3.5 text-cyan-400" />
+            <Monitor className="w-3.5 h-3.5 text-[#BEDEFF]" />
             + PC
           </button>
           <button
             onClick={() => handleAddDevice('server')}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-amber-300 border border-slate-800 text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#FFF2A7] border border-[#FFF2A7]/30 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
           >
-            <Server className="w-3.5 h-3.5 text-amber-400" />
+            <Server className="w-3.5 h-3.5 text-[#FFF2A7]" />
             + Server
           </button>
           <button
             onClick={() => handleAddDevice('switch')}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-indigo-300 border border-slate-800 text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#BEDEFF] border border-[#BEDEFF]/20 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
           >
-            <Network className="w-3.5 h-3.5 text-indigo-400" />
+            <Network className="w-3.5 h-3.5 text-[#FFA500]" />
             + Switch
           </button>
           <button
             onClick={() => handleAddDevice('router')}
-            className="px-2.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-purple-300 border border-slate-800 text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#FFF2A7] border border-[#930031]/50 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
           >
-            <Shield className="w-3.5 h-3.5 text-purple-400" />
+            <Shield className="w-3.5 h-3.5 text-[#FFA500]" />
             + Router
           </button>
         </div>
 
         {/* Quick Simulation Trigger Bar */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex items-center gap-1 text-xs font-mono">
-            <span className="text-slate-500">Src:</span>
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-1.5 text-xs font-mono">
+            <span className="text-[#BEDEFF]/70">Src:</span>
             <select
               value={sourceId}
               onChange={(e) => setSourceId(e.target.value)}
-              className="bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono text-cyan-300 px-2 py-1 focus:outline-none"
+              className="bg-[#070a12] border border-[#BEDEFF]/25 rounded-xl text-xs font-mono text-[#BEDEFF] px-2.5 py-1.5 focus:outline-none focus:border-[#FFA500]"
             >
               {nodes.map(n => (
                 <option key={n.id} value={n.id}>
@@ -370,12 +370,12 @@ export default function VirtualLab() {
             </select>
           </div>
 
-          <div className="flex items-center gap-1 text-xs font-mono">
-            <span className="text-slate-500">Dst:</span>
+          <div className="flex items-center gap-1.5 text-xs font-mono">
+            <span className="text-[#BEDEFF]/70">Dst:</span>
             <select
               value={targetId}
               onChange={(e) => setTargetId(e.target.value)}
-              className="bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono text-amber-300 px-2 py-1 focus:outline-none"
+              className="bg-[#070a12] border border-[#BEDEFF]/25 rounded-xl text-xs font-mono text-[#FFF2A7] px-2.5 py-1.5 focus:outline-none focus:border-[#FFA500]"
             >
               {nodes.map(n => (
                 <option key={n.id} value={n.id}>
@@ -389,7 +389,7 @@ export default function VirtualLab() {
             <select
               value={testType}
               onChange={(e) => setTestType(e.target.value)}
-              className="bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 px-2 py-1 focus:outline-none"
+              className="bg-[#070a12] border border-[#BEDEFF]/25 rounded-xl text-xs font-mono text-white px-2.5 py-1.5 focus:outline-none focus:border-[#FFA500]"
             >
               <option value="ping">ICMP Ping (L3)</option>
               <option value="http">HTTP Web (L7)</option>
@@ -399,7 +399,7 @@ export default function VirtualLab() {
           <button
             onClick={handleRunSimulation}
             disabled={simLoading}
-            className="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs font-mono flex items-center gap-1.5 transition-colors shadow-md shadow-cyan-600/20 disabled:opacity-50"
+            className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs font-mono flex items-center gap-1.5 transition-all shadow-md shadow-[#FFA500]/25 disabled:opacity-50"
           >
             <Play className="w-3.5 h-3.5" />
             {simLoading ? 'Simulating...' : 'Run Simulation'}
@@ -407,27 +407,27 @@ export default function VirtualLab() {
         </div>
 
         {/* Persistence Controls */}
-        <div className="flex items-center gap-2 border-l border-slate-800 pl-3">
+        <div className="flex items-center gap-2 border-l border-[#BEDEFF]/15 pl-3">
           <button
             onClick={handleSaveTopology}
             title="Save network to SQLite"
-            className="px-3 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="px-3.5 py-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#FFF2A7] border border-[#FFA500]/30 text-xs font-mono flex items-center gap-1.5 transition-all"
           >
-            <Save className="w-3.5 h-3.5 text-emerald-400" />
+            <Save className="w-3.5 h-3.5 text-[#FFA500]" />
             Save
           </button>
           <button
             onClick={loadTopology}
             title="Reset to default starter topology"
-            className="p-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800 transition-colors"
+            className="p-1.5 rounded-xl bg-[#070a12] hover:bg-[#111728] text-[#BEDEFF] hover:text-white border border-[#BEDEFF]/20 transition-all"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="w-4 h-4 text-[#FFA500]" />
           </button>
         </div>
       </div>
 
       {/* Main React Flow Canvas Area */}
-      <div className="flex-1 bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden relative shadow-inner">
+      <div className="flex-1 bg-[#070a12] border border-[#BEDEFF]/15 rounded-2xl overflow-hidden relative shadow-inner">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -441,14 +441,14 @@ export default function VirtualLab() {
           minZoom={0.2}
           maxZoom={1.8}
         >
-          <Background color="#1e293b" gap={20} size={1} />
-          <Controls className="!bg-slate-900 !border-slate-800 !rounded-xl !text-slate-300" />
+          <Background color="#192238" gap={20} size={1} />
+          <Controls className="!bg-[#0c101d] !border-[#BEDEFF]/20 !rounded-xl !text-[#BEDEFF]" />
         </ReactFlow>
 
         {/* Canvas floating quick guide */}
-        <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-sm border border-slate-800/80 rounded-xl p-2.5 text-[11px] font-mono text-slate-400 max-w-xs pointer-events-none space-y-1">
-          <div className="text-slate-200 font-semibold flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="absolute top-4 right-4 glass-panel border border-[#BEDEFF]/20 rounded-xl p-3 text-[11px] font-mono text-[#BEDEFF]/75 max-w-xs pointer-events-none space-y-1 shadow-lg">
+          <div className="text-white font-semibold flex items-center gap-1.5">
+            <Info className="w-3.5 h-3.5 text-[#FFA500]" />
             Interactive Canvas Tips
           </div>
           <div>• Click any node to configure IP, Gateway, or Services.</div>

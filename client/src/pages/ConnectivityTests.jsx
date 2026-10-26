@@ -110,26 +110,28 @@ export default function ConnectivityTests() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Title */}
-      <div className="border-b border-slate-800/80 pb-5">
-        <h1 className="text-2xl font-bold text-slate-100 tracking-tight flex items-center gap-2.5">
-          Connectivity Testing & Troubleshooting Lab
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
+      <div className="border-b border-[#BEDEFF]/15 pb-5">
+        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+          <span className="text-gradient-warm font-extrabold">Connectivity Testing & Troubleshooting Lab</span>
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/30 font-mono font-medium">
             Deterministic Scenarios
           </span>
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#BEDEFF]/75 mt-1">
           Test end-to-end network reachability, verify default gateways, and simulate real-world networking errors.
         </p>
       </div>
 
       {/* Pre-Built Viva Demonstration Scenarios */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+      <div className="glass-panel p-6 rounded-2xl space-y-4">
+        <div className="flex items-center justify-between border-b border-[#BEDEFF]/15 pb-3">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <h3 className="text-sm font-semibold text-slate-100">Standard Computer Networks Demonstration Scenarios</h3>
+            <div className="p-1.5 rounded-lg bg-[#FFA500]/15 text-[#FFA500]">
+              <Sparkles className="w-4 h-4 text-[#FFA500]" />
+            </div>
+            <h3 className="text-sm font-semibold text-white">Standard Computer Networks Demonstration Scenarios</h3>
           </div>
-          <span className="text-xs text-slate-400 font-mono">Viva Ready</span>
+          <span className="text-xs text-[#BEDEFF]/70 font-mono">Viva Ready</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -138,15 +140,15 @@ export default function ConnectivityTests() {
             onClick={() => runScenario(1)}
             className={`p-3.5 rounded-xl border text-left transition-all space-y-1.5 ${
               activeScenario === 1
-                ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 ring-2 ring-cyan-500/20'
-                : 'bg-slate-950 hover:bg-slate-900 border-slate-800 text-slate-300'
+                ? 'bg-[#FFA500]/15 border-[#FFA500] text-white ring-2 ring-[#FFA500]/25 shadow-lg shadow-[#FFA500]/10'
+                : 'bg-[#070a12]/80 hover:bg-[#0c101d] border-[#BEDEFF]/15 text-[#BEDEFF]/80 hover:border-[#BEDEFF]/35'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-100">1. Same-Subnet Direct (L2)</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">Pass</span>
+              <span className="text-xs font-bold text-white">1. Same-Subnet Direct (L2)</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] font-mono border border-[#FFA500]/30 font-semibold">Pass</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70">
               PC1 (192.168.1.10) to PC2 (192.168.1.11) via Switch1. No router required.
             </p>
           </button>
@@ -156,15 +158,15 @@ export default function ConnectivityTests() {
             onClick={() => runScenario(2)}
             className={`p-3.5 rounded-xl border text-left transition-all space-y-1.5 ${
               activeScenario === 2
-                ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 ring-2 ring-cyan-500/20'
-                : 'bg-slate-950 hover:bg-slate-900 border-slate-800 text-slate-300'
+                ? 'bg-[#FFA500]/15 border-[#FFA500] text-white ring-2 ring-[#FFA500]/25 shadow-lg shadow-[#FFA500]/10'
+                : 'bg-[#070a12]/80 hover:bg-[#0c101d] border-[#BEDEFF]/15 text-[#BEDEFF]/80 hover:border-[#BEDEFF]/35'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-100">2. Cross-Subnet Routed (L3)</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">Pass</span>
+              <span className="text-xs font-bold text-white">2. Cross-Subnet Routed (L3)</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] font-mono border border-[#FFA500]/30 font-semibold">Pass</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70">
               PC1 (.1.10) to PC3 (.2.10) routed across Router1 with TTL decrement.
             </p>
           </button>
@@ -174,15 +176,15 @@ export default function ConnectivityTests() {
             onClick={() => runScenario(3)}
             className={`p-3.5 rounded-xl border text-left transition-all space-y-1.5 ${
               activeScenario === 3
-                ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 ring-2 ring-cyan-500/20'
-                : 'bg-slate-950 hover:bg-slate-900 border-slate-800 text-slate-300'
+                ? 'bg-[#930031]/30 border-[#930031] text-white ring-2 ring-[#930031]/35 shadow-lg shadow-[#930031]/15'
+                : 'bg-[#070a12]/80 hover:bg-[#0c101d] border-[#BEDEFF]/15 text-[#BEDEFF]/80 hover:border-[#BEDEFF]/35'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-100">3. Invalid Default Gateway</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono">Fail</span>
+              <span className="text-xs font-bold text-white">3. Invalid Default Gateway</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#930031]/25 text-[#FFF2A7] font-mono border border-[#930031]/50 font-semibold">Fail</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70">
               PC3 configured with gateway outside its local subnet. Host unreachable.
             </p>
           </button>
@@ -192,15 +194,15 @@ export default function ConnectivityTests() {
             onClick={() => runScenario(4)}
             className={`p-3.5 rounded-xl border text-left transition-all space-y-1.5 ${
               activeScenario === 4
-                ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 ring-2 ring-cyan-500/20'
-                : 'bg-slate-950 hover:bg-slate-900 border-slate-800 text-slate-300'
+                ? 'bg-[#930031]/30 border-[#930031] text-white ring-2 ring-[#930031]/35 shadow-lg shadow-[#930031]/15'
+                : 'bg-[#070a12]/80 hover:bg-[#0c101d] border-[#BEDEFF]/15 text-[#BEDEFF]/80 hover:border-[#BEDEFF]/35'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-100">4. Duplicate IP Conflict</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono">Fail</span>
+              <span className="text-xs font-bold text-white">4. Duplicate IP Conflict</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#930031]/25 text-[#FFF2A7] font-mono border border-[#930031]/50 font-semibold">Fail</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70">
               Duplicate IP on same LAN segment triggers ARP collision warning.
             </p>
           </button>
@@ -210,15 +212,15 @@ export default function ConnectivityTests() {
             onClick={() => runScenario(5)}
             className={`p-3.5 rounded-xl border text-left transition-all space-y-1.5 ${
               activeScenario === 5
-                ? 'bg-cyan-950/40 border-cyan-500 text-cyan-200 ring-2 ring-cyan-500/20'
-                : 'bg-slate-950 hover:bg-slate-900 border-slate-800 text-slate-300'
+                ? 'bg-[#FFA500]/15 border-[#FFA500] text-white ring-2 ring-[#FFA500]/25 shadow-lg shadow-[#FFA500]/10'
+                : 'bg-[#070a12]/80 hover:bg-[#0c101d] border-[#BEDEFF]/15 text-[#BEDEFF]/80 hover:border-[#BEDEFF]/35'
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-100">5. HTTP Service Stopped</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono">L7 Error</span>
+              <span className="text-xs font-bold text-white">5. HTTP Service Stopped</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFA500] font-mono border border-[#FFA500]/30 font-semibold">L7 Error</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70">
               Network Layer 3 is reachable, but Server Port 80 HTTP daemon is disabled.
             </p>
           </button>
@@ -228,20 +230,20 @@ export default function ConnectivityTests() {
       {/* Manual Test Execution & Result Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Custom Test Controls */}
-        <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-          <h3 className="text-sm font-semibold text-slate-100 border-b border-slate-800/80 pb-2">
+        <div className="glass-panel p-6 rounded-2xl space-y-4">
+          <h3 className="text-sm font-semibold text-white border-b border-[#BEDEFF]/15 pb-2">
             Manual Test Configuration
           </h3>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Source Host</label>
+            <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Source Host</label>
             <select
               value={sourceId}
               onChange={(e) => {
                 setSourceId(e.target.value);
                 setActiveScenario(null);
               }}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-cyan-300 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-[#BEDEFF] font-semibold focus:outline-none focus:border-[#FFA500]"
             >
               {topology.devices.map(d => (
                 <option key={d.id} value={d.id}>
@@ -252,14 +254,14 @@ export default function ConnectivityTests() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Destination Host</label>
+            <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Destination Host</label>
             <select
               value={targetId}
               onChange={(e) => {
                 setTargetId(e.target.value);
                 setActiveScenario(null);
               }}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-amber-300 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-[#FFF2A7] font-semibold focus:outline-none focus:border-[#FFA500]"
             >
               {topology.devices.map(d => (
                 <option key={d.id} value={d.id}>
@@ -270,14 +272,14 @@ export default function ConnectivityTests() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Protocol / Layer</label>
+            <label className="block text-xs font-medium text-[#BEDEFF] mb-1.5">Protocol / Layer</label>
             <select
               value={testType}
               onChange={(e) => {
                 setTestType(e.target.value);
                 setActiveScenario(null);
               }}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl text-xs font-mono text-white focus:outline-none focus:border-[#FFA500]"
             >
               <option value="ping">ICMP Echo Ping (Network Layer 3)</option>
               <option value="http">HTTP Web Request (Application Layer 7)</option>
@@ -287,21 +289,21 @@ export default function ConnectivityTests() {
           <button
             onClick={() => runTest()}
             disabled={loading}
-            className="w-full py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs font-mono transition-colors shadow-lg shadow-cyan-600/20 disabled:opacity-50"
+            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs font-mono transition-all shadow-md shadow-[#FFA500]/25 disabled:opacity-50 font-mono"
           >
             {loading ? 'Evaluating...' : 'Execute Connectivity Test'}
           </button>
         </div>
 
         {/* Detailed Results & Diagnostics */}
-        <div className="lg:col-span-2 p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-          <h3 className="text-sm font-semibold text-slate-100 border-b border-slate-800/80 pb-2 flex items-center justify-between">
+        <div className="lg:col-span-2 glass-panel p-6 rounded-2xl space-y-4">
+          <h3 className="text-sm font-semibold text-white border-b border-[#BEDEFF]/15 pb-2 flex items-center justify-between">
             <span>Diagnostic Execution Output</span>
             {testResult && (
-              <span className={`text-xs px-2.5 py-0.5 rounded-full font-mono uppercase font-bold ${
+              <span className={`text-xs px-3 py-1 rounded-full font-mono uppercase font-bold ${
                 testResult.result === 'SUCCESS'
-                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                  : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                  ? 'bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/40'
+                  : 'bg-[#930031]/25 text-[#FFF2A7] border border-[#930031]/50'
               }`}>
                 {testResult.result}
               </span>
@@ -310,45 +312,45 @@ export default function ConnectivityTests() {
 
           {testResult ? (
             <div className="space-y-4 font-mono text-xs">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
-                <div className="font-bold text-slate-100 text-sm">{testResult.summary}</div>
-                <p className="text-slate-400 text-xs font-sans leading-relaxed">{testResult.explanation}</p>
-                <div className="flex items-center gap-4 text-slate-500 text-[11px] pt-1 border-t border-slate-850">
-                  <span>Layer: {testResult.networkLayer}</span>
-                  <span>Latency: {testResult.metrics?.latencyMs}ms (modeled)</span>
-                  <span>TTL: {testResult.metrics?.ttl}</span>
+              <div className="p-4 rounded-xl bg-[#070a12] border border-[#BEDEFF]/20 space-y-2 shadow-inner">
+                <div className="font-bold text-white text-sm">{testResult.summary}</div>
+                <p className="text-[#BEDEFF]/75 text-xs font-sans leading-relaxed">{testResult.explanation}</p>
+                <div className="flex items-center gap-4 text-[#BEDEFF]/60 text-[11px] pt-1.5 border-t border-[#BEDEFF]/10">
+                  <span>Layer: <strong className="text-[#FFA500]">{testResult.networkLayer}</strong></span>
+                  <span>Latency: <strong className="text-[#FFF2A7]">{testResult.metrics?.latencyMs}ms</strong> (modeled)</span>
+                  <span>TTL: <strong className="text-white">{testResult.metrics?.ttl}</strong></span>
                 </div>
               </div>
 
               {/* Step-by-Step Diagnostic Checkpoints */}
-              <div className="space-y-1.5">
-                <div className="text-slate-400 text-[11px] uppercase tracking-wider font-semibold">
+              <div className="space-y-2">
+                <div className="text-[#BEDEFF]/70 text-[11px] uppercase tracking-wider font-semibold">
                   Underlying Network Diagnostic Verification:
                 </div>
                 {testResult.diagnostics?.map((diag, i) => (
                   <div
                     key={i}
-                    className={`p-2.5 rounded-xl border flex items-center justify-between text-xs ${
+                    className={`p-3 rounded-xl border flex items-center justify-between text-xs ${
                       diag.passed
-                        ? 'bg-slate-950 border-slate-800 text-slate-300'
-                        : 'bg-rose-950/20 border-rose-500/30 text-rose-300'
+                        ? 'bg-[#070a12]/90 border-[#BEDEFF]/15 text-white'
+                        : 'bg-[#930031]/20 border-[#930031]/40 text-[#FFF2A7]'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2.5">
                       {diag.passed ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#FFA500] shrink-0" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                        <XCircle className="w-4 h-4 text-[#FFA500] shrink-0" />
                       )}
                       <span className="font-semibold">{diag.step}</span>
                     </div>
-                    <span className="text-slate-400 text-[11px]">{diag.detail}</span>
+                    <span className="text-[#BEDEFF]/70 text-[11px]">{diag.detail}</span>
                   </div>
                 ))}
               </div>
             </div>
           ) : (
-            <div className="p-12 text-center text-xs text-slate-500 font-mono italic">
+            <div className="p-12 text-center text-xs text-[#BEDEFF]/50 font-mono italic">
               Select a viva demonstration scenario above or run a custom test to observe diagnostic output.
             </div>
           )}

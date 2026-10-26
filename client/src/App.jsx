@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans">
+      <div className="min-h-screen bg-[#070a12] text-slate-100 flex flex-col font-sans">
         {/* Top Navigation */}
         <Navbar
           activePage={activePage}
@@ -88,7 +88,7 @@ export default function App() {
           />
 
           {/* Central Content Area */}
-          <main className="flex-1 overflow-y-auto p-6 bg-[#0b0f19]">
+          <main className="flex-1 overflow-y-auto p-6 bg-[#070a12]">
             {activePage === 'overview' && (
               <Overview onNavigate={setActivePage} clientInfo={clientInfo} />
             )}

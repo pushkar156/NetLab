@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Pause, RotateCcw, StepForward, StepBack, CheckCircle2, XCircle, ArrowRight, Activity, Clock, ShieldCheck } from 'lucide-react';
+import { Play, Pause, RotateCcw, StepForward, StepBack, CheckCircle2, XCircle, ArrowRight, Activity, Clock } from 'lucide-react';
 
 export default function PacketInspector({
   simulation,
@@ -20,33 +20,37 @@ export default function PacketInspector({
   const isSuccess = simulation.result === 'SUCCESS';
 
   return (
-    <div className="bg-slate-900/95 border border-slate-800 rounded-2xl shadow-2xl backdrop-blur-md p-4 w-full flex flex-col gap-3">
+    <div className="bg-[#0c101d]/95 border border-[#BEDEFF]/15 rounded-2xl shadow-2xl backdrop-blur-xl p-4 w-full flex flex-col gap-3">
       {/* Header bar */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
-        <div className="flex items-center gap-2">
-          <div className={`p-1.5 rounded-lg ${isSuccess ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'}`}>
+      <div className="flex items-center justify-between border-b border-[#BEDEFF]/10 pb-2.5">
+        <div className="flex items-center gap-2.5">
+          <div className={`p-2 rounded-xl ${
+            isSuccess
+              ? 'bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30'
+              : 'bg-[#930031]/25 text-[#FFF2A7] border border-[#930031]/50'
+          }`}>
             {isSuccess ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
           </div>
           <div>
-            <h4 className="text-xs font-semibold text-slate-100 flex items-center gap-2">
-              {simulation.summary}
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+            <h4 className="text-xs font-bold text-[#f8fafc] flex items-center gap-2">
+              <span>{simulation.summary}</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#070a12] text-[#FFF2A7] border border-[#BEDEFF]/15">
                 {simulation.networkLayer}
               </span>
             </h4>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#BEDEFF]/70 mt-0.5">
               {simulation.explanation}
             </p>
           </div>
         </div>
 
         {/* Playback Controls */}
-        <div className="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-1.5 bg-[#070a12] p-1.5 rounded-xl border border-[#BEDEFF]/15 shadow-inner">
           <button
             onClick={onStepBackward}
             disabled={currentStep <= 0}
             title="Step backward"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-[#BEDEFF] disabled:opacity-30 transition-colors"
           >
             <StepBack className="w-3.5 h-3.5" />
           </button>
@@ -55,7 +59,7 @@ export default function PacketInspector({
             <button
               onClick={onPause}
               title="Pause animation"
-              className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 transition-colors"
+              className="p-1.5 rounded-lg bg-[#FFA500]/20 text-[#FFA500] hover:bg-[#FFA500]/30 transition-colors"
             >
               <Pause className="w-3.5 h-3.5" />
             </button>
@@ -64,9 +68,9 @@ export default function PacketInspector({
               onClick={onPlay}
               disabled={isComplete}
               title="Play animation"
-              className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 disabled:opacity-30 transition-colors"
+              className="p-1.5 rounded-lg bg-[#FFA500] text-[#070a12] font-bold hover:bg-[#FFA500]/90 disabled:opacity-30 transition-colors shadow-sm shadow-[#FFA500]/30"
             >
-              <Play className="w-3.5 h-3.5" />
+              <Play className="w-3.5 h-3.5 text-[#070a12]" />
             </button>
           )}
 
@@ -74,7 +78,7 @@ export default function PacketInspector({
             onClick={onStepForward}
             disabled={isComplete}
             title="Step forward"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-[#BEDEFF] disabled:opacity-30 transition-colors"
           >
             <StepForward className="w-3.5 h-3.5" />
           </button>
@@ -82,7 +86,7 @@ export default function PacketInspector({
           <button
             onClick={onReset}
             title="Reset simulation"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors ml-1 border-l border-slate-800 pl-2"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-[#FFF2A7] transition-colors ml-1 border-l border-[#BEDEFF]/15 pl-2"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -100,23 +104,23 @@ export default function PacketInspector({
                 <div
                   className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition-all duration-200 shrink-0 flex items-center gap-2 ${
                     isCurrent
-                      ? 'bg-cyan-500/10 border-cyan-400 text-cyan-300 ring-2 ring-cyan-500/20 scale-105'
+                      ? 'bg-gradient-to-r from-[#FFA500]/20 to-[#930031]/20 border-[#FFA500] text-[#FFF2A7] ring-2 ring-[#FFA500]/30 scale-105'
                       : isPast
-                      ? 'bg-slate-950 border-emerald-500/30 text-emerald-300'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-500'
+                      ? 'bg-[#070a12] border-[#BEDEFF]/30 text-[#BEDEFF]'
+                      : 'bg-[#070a12]/60 border-slate-800 text-slate-500'
                   }`}
                 >
-                  <span className="w-4 h-4 rounded-full bg-slate-800 text-[10px] flex items-center justify-center text-slate-300">
+                  <span className="w-4 h-4 rounded-full bg-[#111728] text-[10px] flex items-center justify-center text-[#FFF2A7] font-bold">
                     {idx + 1}
                   </span>
                   <div>
                     <div className="font-semibold">{hop.deviceName}</div>
-                    <div className="text-[9px] text-slate-400">{hop.type}</div>
+                    <div className="text-[9px] text-[#BEDEFF]/50">{hop.type}</div>
                   </div>
                 </div>
 
                 {idx < hops.length - 1 && (
-                  <ArrowRight className={`w-3.5 h-3.5 shrink-0 ${isPast ? 'text-emerald-500' : 'text-slate-700'}`} />
+                  <ArrowRight className={`w-3.5 h-3.5 shrink-0 ${isPast ? 'text-[#BEDEFF]' : 'text-slate-700'}`} />
                 )}
               </React.Fragment>
             );
@@ -124,30 +128,30 @@ export default function PacketInspector({
         </div>
 
         {/* Modeled Metrics badge */}
-        <div className="flex items-center justify-end gap-3 text-[11px] font-mono text-slate-400 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-          <div className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{simulation.metrics?.latencyMs || 0} ms (modeled)</span>
+        <div className="flex items-center justify-end gap-3 text-[11px] font-mono text-slate-300 bg-[#070a12] px-3 py-1.5 rounded-xl border border-[#BEDEFF]/15">
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#FFA500]" />
+            <span className="text-[#FFF2A7] font-medium">{simulation.metrics?.latencyMs || 0} ms</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Activity className="w-3.5 h-3.5 text-indigo-400" />
-            <span>TTL: {simulation.metrics?.ttl || 'N/A'}</span>
+          <div className="flex items-center gap-1.5 border-l border-[#BEDEFF]/15 pl-2">
+            <Activity className="w-3.5 h-3.5 text-[#BEDEFF]" />
+            <span className="text-[#BEDEFF]">TTL: {simulation.metrics?.ttl || 'N/A'}</span>
           </div>
         </div>
       </div>
 
       {/* Active Hop Details */}
       {currentHop && (
-        <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-xs flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">
+        <div className="p-3 rounded-xl bg-[#070a12] border border-[#BEDEFF]/10 text-xs flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#930031]/30 text-[#FFF2A7] border border-[#930031]/50 font-bold">
               Hop {currentStep + 1} of {hops.length}
             </span>
-            <span className="font-medium text-slate-200">
-              {currentHop.deviceName}: <span className="text-slate-400 font-normal">{currentHop.action}</span>
+            <span className="font-semibold text-[#f8fafc]">
+              {currentHop.deviceName}: <span className="text-[#BEDEFF]/80 font-normal">{currentHop.action}</span>
             </span>
           </div>
-          <span className="text-[10px] font-mono text-slate-500">
+          <span className="text-[10px] font-mono text-[#FFF2A7]/60">
             IP: {currentHop.ip || 'Layer 2 Transparent'}
           </span>
         </div>

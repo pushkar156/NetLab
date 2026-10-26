@@ -87,23 +87,23 @@ export default function Overview({ onNavigate, clientInfo }) {
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
       {/* Page Title & Intro */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#BEDEFF]/15 pb-5">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100 tracking-tight flex items-center gap-2.5">
-            System Overview & Operations
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-              Live State
+          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+            <span className="text-gradient-warm font-extrabold">System Overview & Operations</span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFF2A7] border border-[#FFA500]/30 font-mono font-medium">
+              Live Telemetry
             </span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Real-time multi-device metrics combined with virtual network simulation telemetry.
+          <p className="text-xs text-[#BEDEFF]/75 mt-1 font-sans">
+            Real-time physical multi-device metrics combined with virtual network simulation telemetry.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={fetchDashboardData}
-            className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-mono border border-slate-800 transition-colors"
+            className="px-3.5 py-1.5 rounded-xl bg-[#0c101d] hover:bg-[#111728] text-[#BEDEFF] text-xs font-mono border border-[#BEDEFF]/20 hover:border-[#FFA500]/40 transition-all shadow-sm"
           >
             Refresh Metrics
           </button>
@@ -113,22 +113,22 @@ export default function Overview({ onNavigate, clientInfo }) {
       {/* Summary Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Physical Clients */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all shadow-sm">
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Physical Clients</span>
-            <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Physical Clients</span>
+            <div className="p-2 rounded-xl bg-[#BEDEFF]/15 text-[#BEDEFF] border border-[#BEDEFF]/30">
               <Users className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-slate-100 font-mono">{stats.registeredClients}</span>
-            <span className="text-xs text-emerald-400 font-mono">({stats.activeSockets} active sockets)</span>
+            <span className="text-3xl font-extrabold text-white font-mono">{stats.registeredClients}</span>
+            <span className="text-xs text-[#FFF2A7] font-mono">({stats.activeSockets} active)</span>
           </div>
-          <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-800/80 pt-2">
+          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
             <span>Physical devices on LAN</span>
             <button
               onClick={() => onNavigate('live-network')}
-              className="text-cyan-400 hover:underline flex items-center gap-0.5"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
             >
               Manage <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -136,22 +136,22 @@ export default function Overview({ onNavigate, clientInfo }) {
         </div>
 
         {/* Real Messages */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all shadow-sm">
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Messages Exchanged</span>
-            <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Messages Exchanged</span>
+            <div className="p-2 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30">
               <Radio className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-slate-100 font-mono">{stats.messagesCount}</span>
-            <span className="text-xs text-slate-400 font-mono">Socket.IO frames</span>
+            <span className="text-3xl font-extrabold text-white font-mono">{stats.messagesCount}</span>
+            <span className="text-xs text-[#BEDEFF]/80 font-mono">Socket.IO frames</span>
           </div>
-          <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-800/80 pt-2">
+          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
             <span>Client-server relays</span>
             <button
               onClick={() => onNavigate('live-network')}
-              className="text-indigo-400 hover:underline flex items-center gap-0.5"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
             >
               Open Chat <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -159,22 +159,22 @@ export default function Overview({ onNavigate, clientInfo }) {
         </div>
 
         {/* Virtual Devices */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all shadow-sm">
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Virtual Devices</span>
-            <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Virtual Devices</span>
+            <div className="p-2 rounded-xl bg-[#FFF2A7]/15 text-[#FFF2A7] border border-[#FFF2A7]/30">
               <Network className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-slate-100 font-mono">{stats.virtualDevices}</span>
-            <span className="text-xs text-purple-300 font-mono">in active topology</span>
+            <span className="text-3xl font-extrabold text-white font-mono">{stats.virtualDevices}</span>
+            <span className="text-xs text-[#FFF2A7] font-mono">in topology</span>
           </div>
-          <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-800/80 pt-2">
+          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
             <span>2 Subnets modeled</span>
             <button
               onClick={() => onNavigate('virtual-lab')}
-              className="text-purple-400 hover:underline flex items-center gap-0.5"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
             >
               View Canvas <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -182,23 +182,23 @@ export default function Overview({ onNavigate, clientInfo }) {
         </div>
 
         {/* Simulation Tests */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all shadow-sm">
+        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Simulated Tests</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Activity className="w-4 h-4" />
+            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Simulated Tests</span>
+            <div className="p-2 rounded-xl bg-[#930031]/30 text-[#FFF2A7] border border-[#930031]/60">
+              <Activity className="w-4 h-4 text-[#FFA500]" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-slate-100 font-mono">{stats.simulationsTotal}</span>
-            <span className="text-xs text-emerald-400 font-mono">{stats.simulationsSuccess} Pass</span>
-            <span className="text-xs text-rose-400 font-mono">/ {stats.simulationsFailed} Fail</span>
+            <span className="text-3xl font-extrabold text-white font-mono">{stats.simulationsTotal}</span>
+            <span className="text-xs text-[#FFA500] font-mono font-bold">{stats.simulationsSuccess} Pass</span>
+            <span className="text-xs text-[#930031] font-mono font-bold bg-[#930031]/20 px-1 rounded">/ {stats.simulationsFailed} Fail</span>
           </div>
-          <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-800/80 pt-2">
+          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
             <span>Deterministic engine</span>
             <button
               onClick={() => onNavigate('tests')}
-              className="text-emerald-400 hover:underline flex items-center gap-0.5"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
             >
               Test Lab <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -208,118 +208,120 @@ export default function Overview({ onNavigate, clientInfo }) {
 
       {/* Server & LAN Connectivity Card */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+        <div className="lg:col-span-2 glass-panel p-6 rounded-2xl space-y-4">
+          <div className="flex items-center justify-between border-b border-[#BEDEFF]/15 pb-3">
             <div className="flex items-center gap-2.5">
-              <Server className="w-5 h-5 text-cyan-400" />
+              <div className="p-2 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30">
+                <Server className="w-5 h-5 text-[#FFA500]" />
+              </div>
               <div>
-                <h3 className="text-sm font-semibold text-slate-100">Backend Server Runtime & LAN Interfaces</h3>
-                <p className="text-xs text-slate-400">Host laptop network endpoints for multi-device demonstrations.</p>
+                <h3 className="text-sm font-semibold text-white">Backend Server Runtime & LAN Interfaces</h3>
+                <p className="text-xs text-[#BEDEFF]/70">Host network endpoints for physical multi-device demonstrations.</p>
               </div>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span className="text-xs font-mono text-[#FFF2A7] bg-[#FFA500]/15 border border-[#FFA500]/30 px-3 py-1 rounded-full flex items-center gap-1.5 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFA500] animate-ping"></span>
               PORT {serverInfo ? '5000' : '...'}
             </span>
           </div>
 
           <div className="space-y-2">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+            <div className="text-xs font-mono text-[#BEDEFF]/70 uppercase tracking-wider font-semibold">
               Wi-Fi / LAN IP Addresses (Open on phones or other laptops):
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {serverInfo?.serverInterfaces && serverInfo.serverInterfaces.length > 0 ? (
                 serverInfo.serverInterfaces.map((iface, i) => (
-                  <div key={i} className="p-3 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs space-y-1">
+                  <div key={i} className="p-3.5 bg-[#070a12]/90 border border-[#BEDEFF]/20 hover:border-[#FFA500]/40 transition-colors rounded-xl font-mono text-xs space-y-1 shadow-inner">
                     <div className="text-slate-400 flex items-center justify-between">
-                      <span className="text-cyan-400 font-semibold">{iface.interface}</span>
-                      <span className="text-[10px] text-slate-500">{iface.netmask}</span>
+                      <span className="text-[#BEDEFF] font-bold">{iface.interface}</span>
+                      <span className="text-[10px] text-[#BEDEFF]/60 font-mono">{iface.netmask}</span>
                     </div>
-                    <div className="text-slate-200 font-bold select-all">
+                    <div className="text-[#FFF2A7] font-bold select-all text-sm tracking-wide">
                       http://{iface.ip}:5173
                     </div>
-                    <div className="text-[10px] text-slate-500">API Port: 5000</div>
+                    <div className="text-[10px] text-[#FFA500]/80">API Port: 5000</div>
                   </div>
                 ))
               ) : (
-                <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-400 font-mono">
+                <div className="p-3.5 bg-[#070a12]/90 border border-[#BEDEFF]/20 rounded-xl text-xs text-[#BEDEFF]/60 font-mono">
                   Loading network interfaces...
                 </div>
               )}
             </div>
           </div>
 
-          <div className="p-3 rounded-xl bg-cyan-950/30 border border-cyan-800/30 text-xs text-cyan-300 flex items-start gap-2.5">
-            <Wifi className="w-4 h-4 shrink-0 mt-0.5 text-cyan-400" />
+          <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#930031]/20 via-[#0c101d] to-[#0c101d] border border-[#930031]/40 text-xs text-[#BEDEFF] flex items-start gap-3">
+            <Wifi className="w-4 h-4 shrink-0 mt-0.5 text-[#FFA500]" />
             <div>
-              <span className="font-semibold">Multi-Device Viva Demonstration Tip:</span> Connect your phone to the same Wi-Fi as your laptop. In your phone's browser, open the Wi-Fi address shown above (e.g. <span className="font-mono font-bold text-slate-100">http://192.168.1.3:5173</span>). You can register with a custom name and chat directly with your laptop!
+              <span className="font-semibold text-[#FFF2A7]">Multi-Device Viva Demonstration:</span> Connect your phone to the same Wi-Fi as your laptop. In your phone's browser, open the address shown above (e.g. <span className="font-mono font-bold text-[#FFA500]">http://192.168.1.3:5173</span>). You can register with a custom name and exchange real packets directly!
             </div>
           </div>
         </div>
 
         {/* Real HTTP Request-Response Demonstration Widget */}
-        <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 flex flex-col justify-between">
+        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between border-b border-slate-800/80 pb-3 mb-3">
+            <div className="flex items-center justify-between border-b border-[#BEDEFF]/15 pb-3 mb-3">
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-amber-400" />
-                <h3 className="text-sm font-semibold text-slate-100">HTTP L7 Demo Request</h3>
+                <Zap className="w-4 h-4 text-[#FFA500]" />
+                <h3 className="text-sm font-semibold text-white">HTTP L7 Demo Request</h3>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                GET /api/demo/server-info
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#070a12] text-[#BEDEFF] border border-[#BEDEFF]/20 font-medium">
+                GET /api/demo
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 mb-3">
+            <p className="text-xs text-[#BEDEFF]/75 mb-4 leading-relaxed">
               Trigger an authentic HTTP request to the backend server to inspect actual TCP/IP Layer 7 headers, response latency, and observed client metadata.
             </p>
 
             <button
               onClick={triggerHttpDemo}
               disabled={demoLoading}
-              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/20 disabled:opacity-50"
+              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-[#FFA500]/25 hover:shadow-lg hover:shadow-[#FFA500]/30 hover:scale-[1.01] disabled:opacity-50 font-mono"
             >
-              {demoLoading ? 'Transmitting Request...' : 'Send HTTP Demonstration Request'}
+              {demoLoading ? 'Transmitting Request...' : 'Send HTTP Demo Request'}
             </button>
 
             {demoResponse && (
-              <div className="mt-3 p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-1.5 text-xs font-mono">
-                <div className="flex justify-between text-slate-400">
+              <div className="mt-4 p-3.5 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-2 text-xs font-mono shadow-inner">
+                <div className="flex justify-between items-center text-[#BEDEFF]/80">
                   <span>Status:</span>
-                  <span className="text-emerald-400 font-bold">200 OK</span>
+                  <span className="text-[#FFF2A7] font-bold bg-[#FFA500]/20 border border-[#FFA500]/40 px-2 py-0.5 rounded">200 OK</span>
                 </div>
-                <div className="flex justify-between text-slate-400">
-                  <span>Round-Trip Latency:</span>
-                  <span className="text-cyan-300 font-bold">{demoResponse.roundTripMs} ms</span>
+                <div className="flex justify-between items-center text-[#BEDEFF]/80">
+                  <span>Latency:</span>
+                  <span className="text-[#FFA500] font-bold">{demoResponse.roundTripMs} ms</span>
                 </div>
-                <div className="flex justify-between text-slate-400">
-                  <span>Client Observed IP:</span>
-                  <span className="text-slate-200">{demoResponse.clientInfo?.observedIp || '127.0.0.1'}</span>
+                <div className="flex justify-between items-center text-[#BEDEFF]/80">
+                  <span>Observed IP:</span>
+                  <span className="text-white font-semibold">{demoResponse.clientInfo?.observedIp || '127.0.0.1'}</span>
                 </div>
-                <div className="flex justify-between text-slate-400">
+                <div className="flex justify-between items-center text-[#BEDEFF]/60 text-[10px] border-t border-[#BEDEFF]/10 pt-1.5">
                   <span>Request ID:</span>
-                  <span className="text-slate-500 text-[10px]">{demoResponse.requestId}</span>
+                  <span className="text-[#BEDEFF]/70 truncate max-w-[140px]">{demoResponse.requestId}</span>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="text-[10px] text-slate-500 font-mono mt-3">
-            * Authentically verified through Express router and browser Fetch API.
+          <div className="text-[10px] text-[#BEDEFF]/50 font-mono mt-4 pt-2 border-t border-[#BEDEFF]/10">
+            * Verified through Express router and browser Fetch API.
           </div>
         </div>
       </div>
 
       {/* Recent Event Logs */}
-      <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
-          <h3 className="text-sm font-semibold text-slate-100 flex items-center gap-2">
+      <div className="glass-panel p-6 rounded-2xl space-y-3">
+        <div className="flex items-center justify-between border-b border-[#BEDEFF]/15 pb-3">
+          <h3 className="text-sm font-semibold text-white flex items-center gap-2">
             Recent System Activity Logs
-            <span className="text-xs text-slate-500 font-mono font-normal">(SQLite Persistent)</span>
+            <span className="text-xs text-[#BEDEFF]/50 font-mono font-normal">(SQLite Persistent)</span>
           </h3>
           <button
             onClick={() => onNavigate('logs')}
-            className="text-xs text-cyan-400 hover:underline flex items-center gap-1 font-mono"
+            className="text-xs text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-1 font-mono font-medium"
           >
             All Logs <ArrowUpRight className="w-3 h-3" />
           </button>
@@ -330,22 +332,22 @@ export default function Overview({ onNavigate, clientInfo }) {
             recentLogs.map((log) => (
               <div
                 key={log.id}
-                className="p-2.5 rounded-xl bg-slate-950 border border-slate-800/60 flex items-center justify-between text-xs font-mono"
+                className="p-3 rounded-xl bg-[#070a12]/80 border border-[#BEDEFF]/10 hover:border-[#BEDEFF]/25 transition-colors flex items-center justify-between text-xs font-mono"
               >
-                <div className="flex items-center gap-2.5">
-                  <span className={`w-2 h-2 rounded-full ${
-                    log.result === 'SUCCESS' ? 'bg-emerald-400' : log.result === 'FAILED' ? 'bg-rose-400' : 'bg-cyan-400'
+                <div className="flex items-center gap-3">
+                  <span className={`w-2.5 h-2.5 rounded-full ${
+                    log.result === 'SUCCESS' ? 'bg-[#FFA500] shadow-sm shadow-[#FFA500]/50' : log.result === 'FAILED' ? 'bg-[#930031] shadow-sm shadow-[#930031]/50' : 'bg-[#BEDEFF]'
                   }`} />
-                  <span className="text-slate-400 font-medium">{log.event_type}</span>
+                  <span className="text-[#BEDEFF] font-semibold">{log.event_type}</span>
                   <span className="text-slate-200">{log.description}</span>
                 </div>
-                <span className="text-slate-500 text-[10px]">
+                <span className="text-[#BEDEFF]/50 text-[10px]">
                   {new Date(log.created_at).toLocaleTimeString()}
                 </span>
               </div>
             ))
           ) : (
-            <div className="text-xs text-slate-500 italic py-2">No activity logged yet.</div>
+            <div className="text-xs text-[#BEDEFF]/50 italic py-2">No activity logged yet.</div>
           )}
         </div>
       </div>
