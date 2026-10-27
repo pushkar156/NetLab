@@ -16,6 +16,7 @@ import { getSocket } from './services/socket';
 export default function App() {
   const [activePage, setActivePage] = useState('overview');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [serverStatus, setServerStatus] = useState('connecting');
   const [clientInfo, setClientInfo] = useState(null);
 
@@ -78,19 +79,23 @@ export default function App() {
             activePage={activePage}
             serverStatus={serverStatus}
             clientInfo={clientInfo}
+            onToggleMobileMenu={() => setIsMobileOpen(prev => !prev)}
           />
 
           <div className="flex-1 flex overflow-hidden">
-            {/* Collapsible Sidebar */}
+            {/* Sidebar (Desktop Sidebar + Mobile Drawer & Bottom Nav) */}
             <Sidebar
               activePage={activePage}
               setActivePage={setActivePage}
               isCollapsed={isSidebarCollapsed}
               setIsCollapsed={setIsSidebarCollapsed}
+              isMobileOpen={isMobileOpen}
+              setIsMobileOpen={setIsMobileOpen}
+              clientInfo={clientInfo}
             />
 
-            {/* Central Content Area */}
-            <main className="flex-1 overflow-y-auto p-6 app-main bg-[#070a12] transition-colors duration-200">
+            {/* Central Content Area with mobile safe bottom spacing */}
+            <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 pb-24 md:pb-6 app-main bg-[#070a12] transition-colors duration-200">
               {activePage === 'overview' && (
                 <Overview onNavigate={setActivePage} clientInfo={clientInfo} />
               )}

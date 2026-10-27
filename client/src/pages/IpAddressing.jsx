@@ -218,17 +218,17 @@ export default function IpAddressing() {
                 </div>
 
                 {/* Binary Bitwise Representation */}
-                <div className="p-4 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-2 font-mono text-xs shadow-inner">
+                <div className="p-3.5 sm:p-4 bg-[#070a12] border border-[#BEDEFF]/20 rounded-xl space-y-2 font-mono text-xs shadow-inner overflow-hidden">
                   <div className="text-[#FFF2A7] text-[11px] font-semibold border-b border-[#BEDEFF]/15 pb-1">
                     32-Bit Binary Bitwise Breakdown:
                   </div>
-                  <div className="flex justify-between items-center text-white">
-                    <span className="text-[#BEDEFF]/70">Host IP:</span>
-                    <span className="text-[#BEDEFF] select-all font-semibold">{calcResult.binaryIp}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-white gap-0.5 sm:gap-2">
+                    <span className="text-[#BEDEFF]/70 text-[11px]">Host IP:</span>
+                    <span className="text-[#BEDEFF] select-all font-semibold text-[11px] sm:text-xs break-all">{calcResult.binaryIp}</span>
                   </div>
-                  <div className="flex justify-between items-center text-white">
-                    <span className="text-[#BEDEFF]/70">Netmask:</span>
-                    <span className="text-[#FFA500] select-all font-semibold">{calcResult.binaryMask}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-white gap-0.5 sm:gap-2">
+                    <span className="text-[#BEDEFF]/70 text-[11px]">Netmask:</span>
+                    <span className="text-[#FFA500] select-all font-semibold text-[11px] sm:text-xs break-all">{calcResult.binaryMask}</span>
                   </div>
                 </div>
               </div>

@@ -1,30 +1,39 @@
 import React, { useState } from 'react';
-import { Network, Wifi, WifiOff, LogIn, LogOut, Flame, Shield, Sun, Moon } from 'lucide-react';
+import { Network, Wifi, WifiOff, LogIn, LogOut, Flame, Shield, Sun, Moon, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import AuthModal from './AuthModal';
 
-export default function Navbar({ activePage, serverStatus, clientInfo }) {
+export default function Navbar({ activePage, serverStatus, clientInfo, onToggleMobileMenu }) {
   const { user, logout, isFirebaseConfigured } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
     <>
-      <header className="h-16 border-b border-[#BEDEFF]/10 bg-[#070a12]/80 backdrop-blur-xl sticky top-0 z-40 px-6 flex items-center justify-between">
+      <header className="h-16 border-b border-[#BEDEFF]/10 bg-[#070a12]/80 backdrop-blur-xl sticky top-0 z-40 px-3 sm:px-6 flex items-center justify-between">
         {/* Brand & Page Context */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#930031] via-[#FFA500]/80 to-[#FFA500] p-0.5 shadow-lg shadow-[#FFA500]/10">
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={onToggleMobileMenu}
+            className="md:hidden p-2 rounded-xl bg-[#0c101d] text-slate-300 hover:text-[#FFA500] border border-[#BEDEFF]/15 transition-all"
+            title="Open Menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-[#930031] via-[#FFA500]/80 to-[#FFA500] p-0.5 shadow-lg shadow-[#FFA500]/10 shrink-0">
               <div className="w-full h-full rounded-[14px] bg-[#070a12] flex items-center justify-center text-[#FFF2A7]">
-                <Network className="w-5 h-5 text-[#FFA500]" />
+                <Network className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFA500]" />
               </div>
             </div>
             <div>
-              <div className="text-sm font-bold tracking-tight text-[#f8fafc] flex items-center gap-2">
+              <div className="text-sm font-bold tracking-tight text-[#f8fafc] flex items-center gap-1.5 sm:gap-2">
                 <span className="text-gradient-warm font-extrabold text-base tracking-wide">NetLab</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#930031]/25 text-[#FFF2A7] border border-[#930031]/50 font-medium">
-                  v1.0 (CN)
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-[#930031]/25 text-[#FFF2A7] border border-[#930031]/50 font-medium">
+                  v1.0
                 </span>
                 {isFirebaseConfigured && (
                   <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30 font-medium hidden sm:inline-flex items-center gap-1">
@@ -33,7 +42,7 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
                   </span>
                 )}
               </div>
-              <div className="text-[11px] text-[#BEDEFF]/70 font-mono hidden sm:block">
+              <div className="text-[10px] sm:text-[11px] text-[#BEDEFF]/70 font-mono hidden md:block">
                 Hybrid Network Design & Communication Simulator
               </div>
             </div>
@@ -41,7 +50,7 @@ export default function Navbar({ activePage, serverStatus, clientInfo }) {
         </div>
 
         {/* Real-time Status Badges, Theme Toggle & Auth Controls */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Physical Client Identity */}
           {clientInfo?.displayName ? (
             <div className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0c101d] border border-[#BEDEFF]/20 text-xs font-mono shadow-sm">

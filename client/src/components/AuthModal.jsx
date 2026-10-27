@@ -69,17 +69,17 @@ export default function AuthModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div className="glass-panel border border-[#BEDEFF]/20 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+      <div className="glass-panel border border-[#BEDEFF]/20 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden flex flex-col max-h-[92dvh]">
         {/* Header */}
-        <div className="px-6 py-5 border-b border-[#BEDEFF]/15 flex items-center justify-between bg-[#070a12]/80">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30">
-              <Lock className="w-5 h-5 text-[#FFA500]" />
+        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-[#BEDEFF]/15 flex items-center justify-between bg-[#070a12]/80">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="p-2 sm:p-2.5 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30 shrink-0">
+              <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFA500]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <span>{mode === 'login' ? 'Sign In to NetLab' : 'Create NetLab Account'}</span>
+              <h3 className="text-sm font-bold text-white flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span>{mode === 'login' ? 'Sign In' : 'Create Account'}</span>
                 {isFirebaseConfigured && (
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30 font-mono flex items-center gap-1 font-semibold">
                     <Flame className="w-3 h-3 text-[#FFA500]" />
@@ -87,7 +87,7 @@ export default function AuthModal({ isOpen, onClose }) {
                   </span>
                 )}
               </h3>
-              <p className="text-xs text-[#BEDEFF]/70">Save network designs & sync simulations to Firestore.</p>
+              <p className="text-[11px] sm:text-xs text-[#BEDEFF]/70">Save network designs & sync to Firestore.</p>
             </div>
           </div>
           <button
@@ -99,7 +99,7 @@ export default function AuthModal({ isOpen, onClose }) {
         </div>
 
         {/* Status Indicator */}
-        <div className="px-6 pt-3.5">
+        <div className="px-4 sm:px-6 pt-3.5">
           {isFirebaseConfigured ? (
             <div className="p-2.5 rounded-xl bg-[#FFA500]/10 border border-[#FFA500]/25 text-[#FFF2A7] text-[11px] font-mono flex items-center gap-2">
               <Flame className="w-3.5 h-3.5 text-[#FFA500] shrink-0" />
@@ -114,7 +114,7 @@ export default function AuthModal({ isOpen, onClose }) {
         </div>
 
         {/* Tabs */}
-        <div className="px-6 pt-3 flex gap-3 border-b border-[#BEDEFF]/15">
+        <div className="px-4 sm:px-6 pt-3 flex gap-3 border-b border-[#BEDEFF]/15">
           <button
             type="button"
             onClick={() => setMode('login')}
@@ -136,7 +136,7 @@ export default function AuthModal({ isOpen, onClose }) {
         </div>
 
         {/* Body Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto">
           {error && (
             <div className="p-3 rounded-xl bg-[#930031]/25 border border-[#930031]/50 text-[#FFF2A7] text-xs font-mono flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0 text-[#FFA500]" />

@@ -29,7 +29,16 @@
     color: #f8fafc;
     overflow-x: hidden;
     letter-spacing: -0.01em;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  html, body {
+    max-width: 100vw;
+  }
+}
+
+.mobile-safe-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
 }
 
 /* Custom Sleek Ultra-Thin Scrollbars */

@@ -111,24 +111,26 @@ export default function Overview({ onNavigate, clientInfo }) {
       </div>
 
       {/* Summary Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {/* Physical Clients */}
-        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Physical Clients</span>
-            <div className="p-2 rounded-xl bg-[#BEDEFF]/15 text-[#BEDEFF] border border-[#BEDEFF]/30">
-              <Users className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70 truncate">Clients</span>
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#BEDEFF]/15 text-[#BEDEFF] border border-[#BEDEFF]/30 shrink-0">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1.5 sm:gap-2">
+              <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{stats.registeredClients}</span>
+              <span className="text-[10px] sm:text-xs text-[#FFF2A7] font-mono">({stats.activeSockets} active)</span>
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white font-mono">{stats.registeredClients}</span>
-            <span className="text-xs text-[#FFF2A7] font-mono">({stats.activeSockets} active)</span>
-          </div>
-          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
-            <span>Physical devices on LAN</span>
+          <div className="mt-2.5 sm:mt-3 text-[10px] sm:text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2 sm:pt-2.5">
+            <span className="hidden xs:inline truncate">LAN nodes</span>
             <button
               onClick={() => onNavigate('live-network')}
-              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium ml-auto"
             >
               Manage <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -136,69 +138,74 @@ export default function Overview({ onNavigate, clientInfo }) {
         </div>
 
         {/* Real Messages */}
-        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Messages Exchanged</span>
-            <div className="p-2 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30">
-              <Radio className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70 truncate">Messages</span>
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30 shrink-0">
+                <Radio className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1.5 sm:gap-2">
+              <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{stats.messagesCount}</span>
+              <span className="text-[10px] sm:text-xs text-[#BEDEFF]/80 font-mono">Relays</span>
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white font-mono">{stats.messagesCount}</span>
-            <span className="text-xs text-[#BEDEFF]/80 font-mono">Socket.IO frames</span>
-          </div>
-          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
-            <span>Client-server relays</span>
+          <div className="mt-2.5 sm:mt-3 text-[10px] sm:text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2 sm:pt-2.5">
+            <span className="hidden xs:inline truncate">WebSockets</span>
             <button
               onClick={() => onNavigate('live-network')}
-              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium ml-auto"
             >
-              Open Chat <ArrowUpRight className="w-3 h-3" />
+              Chat <ArrowUpRight className="w-3 h-3" />
             </button>
           </div>
         </div>
 
         {/* Virtual Devices */}
-        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Virtual Devices</span>
-            <div className="p-2 rounded-xl bg-[#FFF2A7]/15 text-[#FFF2A7] border border-[#FFF2A7]/30">
-              <Network className="w-4 h-4" />
+        <div className="glass-panel glass-panel-hover p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70 truncate">Virtual Devices</span>
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#FFF2A7]/15 text-[#FFF2A7] border border-[#FFF2A7]/30 shrink-0">
+                <Network className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1.5 sm:gap-2">
+              <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{stats.virtualDevices}</span>
+              <span className="text-[10px] sm:text-xs text-[#FFF2A7] font-mono">Nodes</span>
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white font-mono">{stats.virtualDevices}</span>
-            <span className="text-xs text-[#FFF2A7] font-mono">in topology</span>
-          </div>
-          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
-            <span>2 Subnets modeled</span>
+          <div className="mt-2.5 sm:mt-3 text-[10px] sm:text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2 sm:pt-2.5">
+            <span className="hidden xs:inline truncate">Canvas</span>
             <button
               onClick={() => onNavigate('virtual-lab')}
-              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium ml-auto"
             >
-              View Canvas <ArrowUpRight className="w-3 h-3" />
+              Canvas <ArrowUpRight className="w-3 h-3" />
             </button>
           </div>
         </div>
 
         {/* Simulation Tests */}
-        <div className="glass-panel glass-panel-hover p-5 rounded-2xl">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70">Simulated Tests</span>
-            <div className="p-2 rounded-xl bg-[#930031]/30 text-[#FFF2A7] border border-[#930031]/60">
-              <Activity className="w-4 h-4 text-[#FFA500]" />
+        <div className="glass-panel glass-panel-hover p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#BEDEFF]/70 truncate">Simulations</span>
+              <div className="p-1.5 sm:p-2 rounded-xl bg-[#930031]/30 text-[#FFF2A7] border border-[#930031]/60 shrink-0">
+                <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFA500]" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1.5 sm:gap-2">
+              <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{stats.simulationsTotal}</span>
+              <span className="text-[10px] sm:text-xs text-[#FFA500] font-mono font-bold">{stats.simulationsSuccess} Pass</span>
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-white font-mono">{stats.simulationsTotal}</span>
-            <span className="text-xs text-[#FFA500] font-mono font-bold">{stats.simulationsSuccess} Pass</span>
-            <span className="text-xs text-[#930031] font-mono font-bold bg-[#930031]/20 px-1 rounded">/ {stats.simulationsFailed} Fail</span>
-          </div>
-          <div className="mt-3 text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2.5">
-            <span>Deterministic engine</span>
+          <div className="mt-2.5 sm:mt-3 text-[10px] sm:text-[11px] text-[#BEDEFF]/60 flex items-center justify-between border-t border-[#BEDEFF]/10 pt-2 sm:pt-2.5">
+            <span className="hidden xs:inline truncate">L2/L3 tests</span>
             <button
               onClick={() => onNavigate('tests')}
-              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium"
+              className="text-[#FFA500] hover:text-[#FFF2A7] transition-colors flex items-center gap-0.5 font-medium ml-auto"
             >
               Test Lab <ArrowUpRight className="w-3 h-3" />
             </button>
@@ -332,16 +339,16 @@ export default function Overview({ onNavigate, clientInfo }) {
             recentLogs.map((log) => (
               <div
                 key={log.id}
-                className="p-3 rounded-xl bg-[#070a12]/80 border border-[#BEDEFF]/10 hover:border-[#BEDEFF]/25 transition-colors flex items-center justify-between text-xs font-mono"
+                className="p-2.5 sm:p-3 rounded-xl bg-[#070a12]/80 border border-[#BEDEFF]/10 hover:border-[#BEDEFF]/25 transition-colors flex items-center justify-between text-xs font-mono gap-2"
               >
-                <div className="flex items-center gap-3">
-                  <span className={`w-2.5 h-2.5 rounded-full ${
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <span className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0 ${
                     log.result === 'SUCCESS' ? 'bg-[#FFA500] shadow-sm shadow-[#FFA500]/50' : log.result === 'FAILED' ? 'bg-[#930031] shadow-sm shadow-[#930031]/50' : 'bg-[#BEDEFF]'
                   }`} />
-                  <span className="text-[#BEDEFF] font-semibold">{log.event_type}</span>
-                  <span className="text-slate-200">{log.description}</span>
+                  <span className="text-[#BEDEFF] font-semibold text-[11px] sm:text-xs shrink-0">{log.event_type}</span>
+                  <span className="text-slate-200 text-[11px] sm:text-xs truncate">{log.description}</span>
                 </div>
-                <span className="text-[#BEDEFF]/50 text-[10px]">
+                <span className="text-[#BEDEFF]/50 text-[10px] shrink-0 font-mono">
                   {new Date(log.created_at).toLocaleTimeString()}
                 </span>
               </div>

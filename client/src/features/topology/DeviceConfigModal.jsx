@@ -62,12 +62,12 @@ export default function DeviceConfigModal({ device, isOpen, onClose, onSave, onD
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div className="glass-panel border border-[#BEDEFF]/20 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+      <div className="glass-panel border border-[#BEDEFF]/20 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[92dvh]">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#BEDEFF]/15 flex items-center justify-between bg-[#070a12]/80">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[#BEDEFF]/15 flex items-center justify-between bg-[#070a12]/80">
           <div>
-            <h3 className="text-base font-semibold text-white flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-semibold text-white flex items-center gap-2">
               <span>Configure</span>
               <span className="text-[#FFF2A7] font-mono">{device.name}</span>
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono uppercase font-bold ${
@@ -79,7 +79,7 @@ export default function DeviceConfigModal({ device, isOpen, onClose, onSave, onD
                 {device.type}
               </span>
             </h3>
-            <p className="text-xs text-[#BEDEFF]/70 mt-0.5">Modify device IP addressing, gateway, and service parameters.</p>
+            <p className="text-[11px] sm:text-xs text-[#BEDEFF]/70 mt-0.5">Modify device IP addressing, gateway, and service parameters.</p>
           </div>
           <button
             onClick={onClose}
@@ -90,7 +90,7 @@ export default function DeviceConfigModal({ device, isOpen, onClose, onSave, onD
         </div>
 
         {/* Body */}
-        <div className="p-6 space-y-4 overflow-y-auto">
+        <div className="p-4 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto">
           {validationError && (
             <div className="p-3 rounded-xl bg-[#930031]/25 border border-[#930031]/50 text-[#FFF2A7] text-xs flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 shrink-0 text-[#FFA500]" />
@@ -235,7 +235,7 @@ export default function DeviceConfigModal({ device, isOpen, onClose, onSave, onD
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-[#BEDEFF]/15 bg-[#070a12]/80 flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-t border-[#BEDEFF]/15 bg-[#070a12]/80 flex flex-wrap items-center justify-between gap-2">
           <button
             type="button"
             onClick={() => {
@@ -244,27 +244,27 @@ export default function DeviceConfigModal({ device, isOpen, onClose, onSave, onD
                 onClose();
               }
             }}
-            className="px-3.5 py-2 rounded-xl bg-[#930031]/20 hover:bg-[#930031]/30 text-[#FFF2A7] text-xs font-medium border border-[#930031]/50 flex items-center gap-1.5 transition-colors font-mono"
+            className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#930031]/20 hover:bg-[#930031]/30 text-[#FFF2A7] text-xs font-medium border border-[#930031]/50 flex items-center gap-1.5 transition-colors font-mono"
           >
             <Trash2 className="w-3.5 h-3.5 text-[#FFA500]" />
-            Delete Device
+            <span className="text-[11px] sm:text-xs">Delete</span>
           </button>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-[#BEDEFF] hover:text-white hover:bg-[#111728] text-xs font-medium transition-colors"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[#BEDEFF] hover:text-white hover:bg-[#111728] text-xs font-medium transition-colors"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-[#FFA500]/25 font-mono"
+              className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#FFA500] to-[#FFA500]/90 hover:from-[#FFA500]/95 hover:to-[#FFA500] text-[#070a12] font-bold text-xs flex items-center gap-1.5 transition-all shadow-md shadow-[#FFA500]/25 font-mono"
             >
               <Save className="w-3.5 h-3.5" />
-              Save Configuration
+              <span>Save</span>
             </button>
           </div>
         </div>

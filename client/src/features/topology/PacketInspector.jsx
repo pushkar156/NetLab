@@ -20,32 +20,32 @@ export default function PacketInspector({
   const isSuccess = simulation.result === 'SUCCESS';
 
   return (
-    <div className="bg-[#0c101d]/95 border border-[#BEDEFF]/15 rounded-2xl shadow-2xl backdrop-blur-xl p-4 w-full flex flex-col gap-3">
+    <div className="bg-[#0c101d]/95 border border-[#BEDEFF]/15 rounded-2xl shadow-2xl backdrop-blur-xl p-3 sm:p-4 w-full flex flex-col gap-2.5 sm:gap-3">
       {/* Header bar */}
-      <div className="flex items-center justify-between border-b border-[#BEDEFF]/10 pb-2.5">
-        <div className="flex items-center gap-2.5">
-          <div className={`p-2 rounded-xl ${
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-[#BEDEFF]/10 pb-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className={`p-1.5 sm:p-2 rounded-xl shrink-0 ${
             isSuccess
               ? 'bg-[#FFA500]/15 text-[#FFA500] border border-[#FFA500]/30'
               : 'bg-[#930031]/25 text-[#FFF2A7] border border-[#930031]/50'
           }`}>
             {isSuccess ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
           </div>
-          <div>
-            <h4 className="text-xs font-bold text-[#f8fafc] flex items-center gap-2">
-              <span>{simulation.summary}</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#070a12] text-[#FFF2A7] border border-[#BEDEFF]/15">
+          <div className="min-w-0">
+            <h4 className="text-xs font-bold text-[#f8fafc] flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="truncate">{simulation.summary}</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#070a12] text-[#FFF2A7] border border-[#BEDEFF]/15 shrink-0">
                 {simulation.networkLayer}
               </span>
             </h4>
-            <p className="text-[11px] text-[#BEDEFF]/70 mt-0.5">
+            <p className="text-[11px] text-[#BEDEFF]/70 mt-0.5 line-clamp-2 sm:line-clamp-none">
               {simulation.explanation}
             </p>
           </div>
         </div>
 
         {/* Playback Controls */}
-        <div className="flex items-center gap-1.5 bg-[#070a12] p-1.5 rounded-xl border border-[#BEDEFF]/15 shadow-inner">
+        <div className="flex items-center justify-end gap-1.5 bg-[#070a12] p-1.5 rounded-xl border border-[#BEDEFF]/15 shadow-inner self-end sm:self-auto shrink-0">
           <button
             onClick={onStepBackward}
             disabled={currentStep <= 0}
